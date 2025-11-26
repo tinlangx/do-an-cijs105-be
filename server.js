@@ -10,7 +10,6 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-
 // middlewares
 app.use(
     cors({
@@ -37,12 +36,14 @@ const userSchema = new mongoose.Schema(
 const User = mongoose.model('User', userSchema);
 
 // ----- Kết nối MongoDB -----
+if (!process.env.MONGO_URI) {
+    console.error('⚠️ MONGO_URI is not defined');
+}
+
 mongoose
     .connect(process.env.MONGO_URI)
     .then(() => console.log('✅ Connected to MongoDB'))
-    .catch((err) => console.error('MongoDB error:', err));
-console.log("connect succes")
-
+    .catch((err) => console.error('❌ MongoDB connection error:', err));
 // ----- Routes Auth -----
 
 // Đăng ký

@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 5000;
 app.use(
     cors({
         origin: [
-            'https://do-an-cijs105-fe.vercel.app'
+            'https://do-an-cijs105.vercel.app'
         ],
         credentials: true,
     })

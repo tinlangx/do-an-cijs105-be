@@ -10,13 +10,15 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+
 // middlewares
 app.use(
   cors({
-    origin: 'mongodb+srv://tinlangx:1234566@mindx-web91.whzoamu.mongodb.net/', // đổi nếu FE chạy port khác
+    origin: 'mongodb+srv://tinlangx:1234566@mindx-web91.whzoamu.mongodb.net/',
     credentials: true,
   })
 );
+
 app.use(express.json());
 
 // ----- Mongoose model -----
@@ -100,6 +102,11 @@ app.post('/api/auth/login', async (req, res) => {
     console.error(err);
     return res.status(500).json({ message: 'Lỗi server' });
   }
+});
+
+
+app.get('/', (req, res) => {
+  res.json({ message: 'API is running' });
 });
 
 // ----- Start server -----

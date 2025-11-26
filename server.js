@@ -68,8 +68,10 @@ app.post('/api/auth/register', async (req, res) => {
             user: { id: user._id, name: user.name, email: user.email },
         });
     } catch (err) {
-        console.error(err);
-        return res.status(500).json({ message: 'Lỗi server' });
+        console.error('Register error:', err);
+        return res
+            .status(500)
+            .json({ message: 'Lỗi server', error: err.message });
     }
 });
 

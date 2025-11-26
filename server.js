@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 5000;
 // middlewares
 app.use(
   cors({
-    origin: 'http://localhost:5173', // đổi nếu FE chạy port khác
+    origin: 'mongodb+srv://tinlangx:1234566@mindx-web91.whzoamu.mongodb.net/', // đổi nếu FE chạy port khác
     credentials: true,
   })
 );
@@ -36,6 +36,7 @@ mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log('✅ Connected to MongoDB'))
   .catch((err) => console.error('MongoDB error:', err));
+  console.log("connect succes")
 
 // ----- Routes Auth -----
 
